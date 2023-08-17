@@ -1,13 +1,6 @@
 {
   "dogs": [
     {
-      "name": "Wilber",
-      "image": "/assets/chihuahua.avif",
-      "description": "magenta boo colossal unpleasant seize Tactics Florida",
-      "isFavorite": true,
-      "id": 0
-    },
-    {
       "name": "Roselyn",
       "image": "/assets/chihuahua.avif",
       "description": "Coupe South withdrawal Soft Latin lime Reggae chapter",

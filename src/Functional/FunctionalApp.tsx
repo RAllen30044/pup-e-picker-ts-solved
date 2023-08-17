@@ -12,7 +12,7 @@ export function FunctionalApp() {
 
   const fetchData = () => {
     setIsLoading(true);
-    return Requests.getAllDogs()
+   return Requests.getAllDogs()
       .then(setAllDogs)
       .finally(() => {
         setIsLoading(false);
@@ -36,7 +36,7 @@ export function FunctionalApp() {
       });
   };
 
-  const deleteDog = (id:number) => {
+  const deleteDog = (id: number) => {
     setIsLoading(true);
     Requests.deleteDog(id)
       .then(() => {
@@ -47,9 +47,9 @@ export function FunctionalApp() {
       });
   };
 
-  const updateDog = (id:number, favorite:boolean) => {
+  const updateDog = (id: number, favorite: boolean) => {
     setIsLoading(true);
-    Requests.updateDog(id,favorite)
+    Requests.updateDog(id, favorite)
       .then(() => {
         fetchData();
       })
@@ -58,16 +58,19 @@ export function FunctionalApp() {
       });
   };
 
-
-
   return (
     <div className="App" style={{ backgroundColor: "skyblue" }}>
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
       <FunctionalSection />
-      <FunctionalDogs />
-      <FunctionalCreateDogForm />
+      <FunctionalDogs
+        allDogs={allDogs}
+        isLoading={isLoading}
+        deleteDog={deleteDog}
+        updateDog={updateDog}
+      />
+      <FunctionalCreateDogForm createDog={createDog} allDogs={allDogs} isLoading={isLoading}/>
     </div>
   );
 }

@@ -25,7 +25,10 @@ export const FunctionalSection = () => {
           </div>
         </div>
       </div>
-      <div className="content-container"></div>
+      <div className="content-container">
+
+        
+      </div>
     </section>
   );
 };
