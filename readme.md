@@ -40,12 +40,12 @@ To get this project setup, you should:
 
 ## Standard Requirements
 
-- [ ] Setup eslint
-- [ ] Pass all linting checks
+- [x] Setup eslint
+- [] Pass all linting checks
 
 - To check if linting passes, run `npm run lint`
 
-- [ ] Format code with prettier
+- [x] Format code with prettier
 - [ ] State should not be duplicated
 - [ ] Variables should be named logically
 - [ ] No unnecessary console logs

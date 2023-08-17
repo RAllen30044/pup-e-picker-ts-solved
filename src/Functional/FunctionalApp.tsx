@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { FunctionalCreateDogForm } from "./FunctionalCreateDogForm";
-import { FunctionalDogs } from "./FunctionalDogs";
+
 import { FunctionalSection } from "./FunctionalSection";
 import { Dog } from "../types";
 import { Requests } from "../api";
@@ -63,14 +62,14 @@ export function FunctionalApp() {
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
-      <FunctionalSection />
-      <FunctionalDogs
-        allDogs={allDogs}
+      <FunctionalSection       allDogs={allDogs}
         isLoading={isLoading}
         deleteDog={deleteDog}
-        updateDog={updateDog}
-      />
-      <FunctionalCreateDogForm createDog={createDog} allDogs={allDogs} isLoading={isLoading}/>
+        updateDog={updateDog} 
+        createDog={createDog}
+        />
+
+      
     </div>
   );
 }

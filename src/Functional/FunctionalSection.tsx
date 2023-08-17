@@ -1,8 +1,25 @@
 // you can use this type for react children if you so choose
-import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 
-export const FunctionalSection = () => {
+import { Link } from "react-router-dom";
+import { FunctionalCreateDogForm } from "./FunctionalCreateDogForm";
+import { FunctionalDogs } from "./FunctionalDogs";
+import { Dog } from "../types";
+
+export const FunctionalSection = ({
+  createDog,
+
+  allDogs,
+  isLoading,
+  deleteDog,
+  updateDog,
+}: {
+  createDog: (dog: Omit<Dog, "id">) => void;
+  isLoading: boolean;
+  allDogs: Dog[];
+
+  deleteDog: (id: number) => void;
+  updateDog: (id: number, favorite: boolean) => void;
+}) => {
   return (
     <section id="main-section">
       <div className="container-header">
@@ -26,8 +43,13 @@ export const FunctionalSection = () => {
         </div>
       </div>
       <div className="content-container">
-
-        
+        <FunctionalDogs
+          allDogs={allDogs}
+          isLoading={isLoading}
+          deleteDog={deleteDog}
+          updateDog={updateDog}
+        />
+        <FunctionalCreateDogForm createDog={createDog} isLoading={isLoading} />
       </div>
     </section>
   );

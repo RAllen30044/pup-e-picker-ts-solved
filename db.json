@@ -139,6 +139,20 @@
       "image": "/assets/blue-heeler.png",
       "isFavorite": false,
       "id": 20
+    },
+    {
+      "name": "Courage",
+      "description": "Cowardly Dog",
+      "image": "/assets/cowardly.png",
+      "isFavorite": true,
+      "id": 21
+    },
+    {
+      "name": "miko",
+      "description": "small cuddly dog",
+      "image": "/assets/chihuahua.avif",
+      "isFavorite": true,
+      "id": 22
     }
   ]
 }
