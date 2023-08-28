@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { FunctionalSection } from "./FunctionalSection";
 import { Dog } from "../types";
 import { Requests } from "../api";
+import { toast } from "react-hot-toast";
 
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fetchData = () => {
     setIsLoading(true);
-   return Requests.getAllDogs()
+    return Requests.getAllDogs()
       .then(setAllDogs)
       .finally(() => {
         setIsLoading(false);
@@ -30,6 +30,9 @@ export function FunctionalApp() {
       .then(() => {
         fetchData();
       })
+      .then(() => {
+        toast.success("You have posted a new dog");
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -37,7 +40,7 @@ export function FunctionalApp() {
 
   const deleteDog = (id: number) => {
     setIsLoading(true);
-    Requests.deleteDog(id)
+    Requests.delete(id)
       .then(() => {
         fetchData();
       })
@@ -52,6 +55,7 @@ export function FunctionalApp() {
       .then(() => {
         fetchData();
       })
+
       .finally(() => {
         setIsLoading(false);
       });
@@ -62,14 +66,13 @@ export function FunctionalApp() {
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
-      <FunctionalSection       allDogs={allDogs}
+      <FunctionalSection
+        allDogs={allDogs}
         isLoading={isLoading}
         deleteDog={deleteDog}
-        updateDog={updateDog} 
+        updateDog={updateDog}
         createDog={createDog}
-        />
-
-      
+      />
     </div>
   );
 }

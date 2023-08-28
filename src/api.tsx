@@ -16,7 +16,7 @@ export const Requests = {
   },
 
   // should delete a dog from the database
-  deleteDog: (id: number) => {
+  delete: (id: number) => {
     return fetch(`${baseUrl}/dogs/${id}`, {
       method: "DELETE",
     }).then((res) => res.json());

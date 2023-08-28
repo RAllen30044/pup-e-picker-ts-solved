@@ -4,22 +4,15 @@
       "name": "Roselyn",
       "image": "/assets/chihuahua.avif",
       "description": "Coupe South withdrawal Soft Latin lime Reggae chapter",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 1
     },
     {
       "name": "Antonia",
       "image": "/assets/chihuahua.avif",
       "description": "ampere Metal lavender Funk Fundamental payment wireless",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 2
-    },
-    {
-      "name": "Shaina",
-      "image": "/assets/corgi.png",
-      "description": "Cotton male Refined Convertible auxiliary",
-      "isFavorite": true,
-      "id": 3
     },
     {
       "name": "Dallin",
@@ -39,35 +32,35 @@
       "name": "Roy",
       "image": "/assets/corgi.png",
       "description": "male AGP copying Chair exercitationem",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 6
     },
     {
       "name": "Ellis",
       "image": "/assets/cowardly.png",
       "description": "Folk interface engage Classical Specialist Bicycle gold",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 7
     },
     {
       "name": "Velma",
       "image": "/assets/boxer.png",
       "description": "Diesel whether synthesize South Investment Zirconium farad",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 8
     },
     {
       "name": "Theodora",
       "image": "/assets/dalmation.png",
       "description": "Alaska Sedan digital empowering 1080p huzzah Bike Wooden",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 9
     },
     {
       "name": "Geovanny",
       "image": "/assets/cowardly.png",
       "description": "South North male Sports Gasoline",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 10
     },
     {
@@ -81,21 +74,21 @@
       "name": "Estefania",
       "image": "/assets/dalmation.png",
       "description": "reboot facilis input management that overriding SMTP",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 12
     },
     {
       "name": "Myles",
       "image": "/assets/blue-heeler.png",
       "description": "Synchronised group sensor composite raw anenst navigate",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 13
     },
     {
       "name": "Santiago",
       "image": "/assets/corgi.png",
       "description": "woman Global piercing Rap Web",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 14
     },
     {
@@ -116,7 +109,7 @@
       "name": "Angelina",
       "image": "/assets/blue-heeler.png",
       "description": "Manager Sodium FTM maroon SSD Jewelery White bully",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 17
     },
     {
@@ -130,29 +123,36 @@
       "name": "Yvette",
       "image": "/assets/boxer.png",
       "description": "distributed Sleek nest exploit Surinam compressing straight",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 19
     },
     {
-      "name": "asdfasdf",
-      "description": "asdfasdf",
-      "image": "/assets/blue-heeler.png",
-      "isFavorite": false,
-      "id": 20
+      "name": "Cuddles",
+      "description": "Nice Dog",
+      "image": "/public/assets/yorki.png",
+      "isFavorite": true,
+      "id": 22
     },
     {
       "name": "Courage",
       "description": "Cowardly Dog",
       "image": "/assets/cowardly.png",
-      "isFavorite": true,
-      "id": 21
+      "isFavorite": false,
+      "id": 23
     },
     {
-      "name": "miko",
-      "description": "small cuddly dog",
-      "image": "/assets/chihuahua.avif",
-      "isFavorite": true,
-      "id": 22
+      "name": "Courage",
+      "description": "Cowardly Dog",
+      "image": "/assets/cowardly.png",
+      "isFavorite": false,
+      "id": 24
+    },
+    {
+      "name": "Courage",
+      "description": "Cowardly Dog",
+      "image": "/assets/cowardly.png",
+      "isFavorite": false,
+      "id": 25
     }
   ]
 }
