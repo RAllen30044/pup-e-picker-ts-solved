@@ -11,21 +11,21 @@
       "name": "Antonia",
       "image": "/assets/chihuahua.avif",
       "description": "ampere Metal lavender Funk Fundamental payment wireless",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 2
     },
     {
       "name": "Dallin",
       "image": "/assets/chihuahua.avif",
       "description": "Directives Delaware why Response Diesel Kentucky blue cyan",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 4
     },
     {
       "name": "Efrain",
       "image": "/assets/chihuahua.avif",
       "description": "Electric Analyst Usability Mountain East Table female Lead",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 5
     },
     {
@@ -39,21 +39,21 @@
       "name": "Ellis",
       "image": "/assets/cowardly.png",
       "description": "Folk interface engage Classical Specialist Bicycle gold",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 7
     },
     {
       "name": "Velma",
       "image": "/assets/boxer.png",
       "description": "Diesel whether synthesize South Investment Zirconium farad",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 8
     },
     {
       "name": "Theodora",
       "image": "/assets/dalmation.png",
       "description": "Alaska Sedan digital empowering 1080p huzzah Bike Wooden",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 9
     },
     {
@@ -67,7 +67,7 @@
       "name": "Estevan",
       "image": "/assets/dalmation.png",
       "description": "Automotive Monitored circa violet Georgia",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 11
     },
     {
@@ -132,27 +132,6 @@
       "image": "/public/assets/yorki.png",
       "isFavorite": true,
       "id": 22
-    },
-    {
-      "name": "Courage",
-      "description": "Cowardly Dog",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 23
-    },
-    {
-      "name": "Courage",
-      "description": "Cowardly Dog",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 24
-    },
-    {
-      "name": "Courage",
-      "description": "Cowardly Dog",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 25
     }
   ]
 }

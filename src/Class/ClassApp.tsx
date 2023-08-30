@@ -18,47 +18,33 @@ export class ClassApp extends Component {
       });
   };
   componentDidMount(): void {
-    this.setState({ isLoading: true });
-    this.fetchData().then(() => this.setState({ isLoading: false }));
+    this.fetchData();
   }
   createDog = (dog: Omit<Dog, "id">) => {
-    this.setState({ isLoading: true });
     Requests.postDog(dog)
       .then(() => {
         this.fetchData();
-      }).then(()=>{
-        toast.success("Dog Created")
       })
-      .finally(() => {
-        this.setState({ isLoading: false });
+      .then(() => {
+        toast.success("Dog Created");
       });
   };
 
   deleteDog = (id: number) => {
-    this.setState({ isLoading: true });
-    Requests.delete(id)
-      .then(() => {
-        this.fetchData();
-      })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      });
+    Requests.delete(id).then(() => {
+      this.fetchData();
+    });
   };
 
   updateDog = (id: number, favorite: boolean) => {
-    this.setState({ isLoading: true });
-    Requests.updateDog(id, favorite)
-      .then(() => {
-        this.fetchData();
-      })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      });
+    Requests.updateDog(id, favorite).then(() => {
+      this.fetchData();
+    });
   };
 
   render() {
     const { updateDog, createDog, deleteDog } = this;
-    const {allDogs, isLoading}= this.state;
+    const { allDogs, isLoading } = this.state;
     return (
       <div className="App" style={{ backgroundColor: "goldenrod" }}>
         <header>

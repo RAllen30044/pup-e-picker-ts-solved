@@ -3,7 +3,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import { ClassDogs } from "./ClassDogs";
 import { ClassCreateDogForm } from "./ClassCreateDogForm";
-import { Dog, Props } from "../types";
+import { Dog, ActiveComponent } from "../types";
 
 export class ClassSection extends Component<{
   createDog: (dog: Omit<Dog, "id">) => void;
@@ -13,50 +13,30 @@ export class ClassSection extends Component<{
   updateDog: (id: number, favorite: boolean) => void;
 }> {
   state = {
-    favoriteDogs: [],
-    unfavoriteDogs: [],
-    showComponent: "all-dogs",
-    activeOne: "",
-    activeTwo: "",
-    activeThree: "",
+    activeComponent: "all-dogs",
   };
-
-  componentDidMount() {
-    this.updateDogList();
-  }
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.allDogs !== this.props.allDogs) {
-      this.updateDogList();
+  toggleTab = (input: ActiveComponent) => {
+    const { activeComponent } = this.state;
+    if (input === "all-dogs") {
+      this.setState({ activeComponent: "all-dogs" });
+      return;
     }
-  }
-
-  updateDogList = () => {
-    const favorited: Dog[] = [];
-    const unfavorited: Dog[] = [];
-
-    this.props.allDogs.map((dog) => {
-      if (dog.isFavorite === true) {
-        favorited.push(dog);
-      } else {
-        unfavorited.push(dog);
-      }
-    });
-
-    this.setState({ favoriteDogs: favorited });
-    this.setState({ unfavoriteDogs: unfavorited });
+    if (input === activeComponent) {
+      this.setState({ activeComponent: "all-dogs" });
+      return;
+    }
+    if (input !== activeComponent) {
+      this.setState({ activeComponent: input });
+      return;
+    }
   };
-
   render() {
     const { allDogs, isLoading, createDog, deleteDog, updateDog } = this.props;
-    const {
-      favoriteDogs,
-      unfavoriteDogs,
-      showComponent,
-      activeOne,
-      activeTwo,
-      activeThree,
-    } = this.state;
+    const { activeComponent } = this.state;
+    const { toggleTab } = this;
 
+    const favoriteDogs = allDogs.filter((dog) => dog.isFavorite === true);
+    const unfavoriteDogs = allDogs.filter((dog) => dog.isFavorite === false);
     return (
       <section id="main-section">
         <div className="container-header">
@@ -69,16 +49,11 @@ export class ClassSection extends Component<{
           <div className="selectors">
             {/* This should display the favorited count */}
             <div
-              className={`selector ${activeOne}`}
+              className={`selector ${
+                activeComponent === "favorited-dogs" ? "active" : ""
+              }`}
               onClick={() => {
-                if (activeOne === "active") {
-                  this.setState({ activeOne: "" });
-                  return this.setState({ showComponent: "all-dogs" });
-                }
-                this.setState({ activeOne: "active" });
-                this.setState({ activeTwo: "" });
-                this.setState({ activeThree: "" });
-                this.setState({ showComponent: "favorited-dogs" });
+                toggleTab("favorited-dogs");
               }}
             >
               favorited ( {favoriteDogs.length} )
@@ -86,31 +61,21 @@ export class ClassSection extends Component<{
 
             {/* This should display the unfavorited count */}
             <div
-              className={`selector ${activeTwo}`}
+              className={`selector ${
+                activeComponent === "unfavorited-dogs" ? "active" : ""
+              }`}
               onClick={() => {
-                if (activeTwo === "active") {
-                  this.setState({ activeTwo: "" });
-                  return this.setState({ showComponent: "all-dogs" });
-                }
-                this.setState({ activeOne: "" });
-                this.setState({ activeTwo: "active" });
-                this.setState({ activeThree: "" });
-                this.setState({ showComponent: "unfavorited-dogs" });
+                toggleTab("unfavorited-dogs");
               }}
             >
               unfavorited ( {unfavoriteDogs.length} )
             </div>
             <div
-              className={`selector ${activeThree}`}
+              className={`selector ${
+                activeComponent === "create-dog-form" ? "active" : ""
+              }`}
               onClick={() => {
-                if (activeThree === "active") {
-                  this.setState({ activeThree: "" });
-                  return this.setState({ showComponent: "all-dogs" });
-                }
-                this.setState({ activeOne: "" });
-                this.setState({ activeTwo: "" });
-                this.setState({ activeThree: "active" });
-                this.setState({ showComponent: "dog-form" });
+                toggleTab("create-dog-form");
               }}
             >
               create dog
@@ -118,7 +83,7 @@ export class ClassSection extends Component<{
           </div>
         </div>
         <div className="content-container">
-          {showComponent === "all-dogs" && (
+          {activeComponent === "all-dogs" && (
             <ClassDogs
               allDogs={allDogs}
               isLoading={isLoading}
@@ -126,7 +91,7 @@ export class ClassSection extends Component<{
               updateDog={updateDog}
             />
           )}
-          {showComponent === "favorited-dogs" && (
+          {activeComponent === "favorited-dogs" && (
             <ClassDogs
               allDogs={favoriteDogs}
               isLoading={isLoading}
@@ -134,7 +99,7 @@ export class ClassSection extends Component<{
               updateDog={updateDog}
             />
           )}
-          {showComponent === "unfavorited-dogs" && (
+          {activeComponent === "unfavorited-dogs" && (
             <ClassDogs
               allDogs={unfavoriteDogs}
               isLoading={isLoading}
@@ -143,7 +108,7 @@ export class ClassSection extends Component<{
             />
           )}
 
-          {showComponent === "dog-form" && (
+          {activeComponent === "create-dog-form" && (
             <ClassCreateDogForm createDog={createDog} isLoading={isLoading} />
           )}
         </div>

@@ -12,7 +12,7 @@ export const FunctionalCreateDogForm = ({
 }) => {
   const [nameInput, setNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [dogSelectionImage, setDogSelectionImage] = useState("");
+  const [dogSelectionImage, setDogSelectionImage] = useState(dogPictures.BlueHeeler);
   return (
     <form
       action=""

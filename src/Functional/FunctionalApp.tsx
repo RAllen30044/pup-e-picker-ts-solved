@@ -18,47 +18,30 @@ export function FunctionalApp() {
       });
   };
   useEffect(() => {
-    setIsLoading(true);
-    fetchData().then(() => {
-      setIsLoading(false);
-    });
+    fetchData();
   }, []);
 
   const createDog = (dog: Omit<Dog, "id">) => {
-    setIsLoading(true);
     Requests.postDog(dog)
       .then(() => {
         fetchData();
       })
       .then(() => {
         toast.success("You have posted a new dog");
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   };
 
   const deleteDog = (id: number) => {
     setIsLoading(true);
-    Requests.delete(id)
-      .then(() => {
-        fetchData();
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    Requests.delete(id).then(() => {
+      fetchData();
+    });
   };
 
   const updateDog = (id: number, favorite: boolean) => {
-    setIsLoading(true);
-    Requests.updateDog(id, favorite)
-      .then(() => {
-        fetchData();
-      })
-
-      .finally(() => {
-        setIsLoading(false);
-      });
+    Requests.updateDog(id, favorite).then(() => {
+      fetchData();
+    });
   };
 
   return (

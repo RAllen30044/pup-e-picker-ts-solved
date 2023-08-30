@@ -10,3 +10,4 @@ export type Dog={
 export type Props={
       allDogs: Dog[];
 }
+export type ActiveComponent = "all-dogs"|"favorited-dogs"|"unfavorited-dogs"| "create-dog-form";

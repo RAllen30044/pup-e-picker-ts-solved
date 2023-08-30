@@ -3,8 +3,8 @@
 import { Link } from "react-router-dom";
 import { FunctionalCreateDogForm } from "./FunctionalCreateDogForm";
 import { FunctionalDogs } from "./FunctionalDogs";
-import { Dog } from "../types";
-import { useState, useEffect, useRef } from "react";
+import { ActiveComponent, Dog } from "../types";
+import { useState } from "react";
 
 export const FunctionalSection = ({
   createDog,
@@ -19,28 +19,26 @@ export const FunctionalSection = ({
   deleteDog: (id: number) => void;
   updateDog: (id: number, favorite: boolean) => void;
 }) => {
-  const [favoriteDogs, setFavoriteDogs] = useState<Dog[]>([]);
-  const [unfavoriteDogs, setUnfavoriteDogs] = useState<Dog[]>([]);
-  const [showComponent, setShowComponent] = useState<string>("all-dogs");
+  const [activeComponent, setActiveComponent] =
+    useState<ActiveComponent>("all-dogs");
 
-  useEffect(() => {
-    const favorited: Dog[] = [];
-    const unfavorited: Dog[] = [];
-    allDogs.map((dog) => {
-      if (dog.isFavorite === true) {
-        favorited.push(dog);
-      } else {
-        unfavorited.push(dog);
-      }
-    });
+  const favoriteDogs = allDogs.filter((dog) => dog.isFavorite === true);
+  const unfavoriteDogs = allDogs.filter((dog) => dog.isFavorite === false);
 
-    setFavoriteDogs(favorited);
-    setUnfavoriteDogs(unfavorited);
-  }, [allDogs]);
-
-  const ref1 = useRef("");
-  const ref2 = useRef("");
-  const ref3 = useRef("");
+  const toggleTab = (input: ActiveComponent) => {
+    if (input === "all-dogs") {
+      setActiveComponent("all-dogs");
+      return;
+    }
+    if (input === activeComponent) {
+      setActiveComponent("all-dogs");
+      return;
+    }
+    if (input !== activeComponent) {
+      setActiveComponent(input);
+      return;
+    }
+  };
   return (
     <section id="main-section">
       <div className="container-header">
@@ -51,18 +49,11 @@ export const FunctionalSection = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${ref1.current}`}
+            className={`selector ${
+              activeComponent === "favorited-dogs" ? "active" : ""
+            }`}
             onClick={() => {
-              if (showComponent === "favorited-dogs") {
-                ref1.current = "";
-
-                return setShowComponent("all-dogs");
-              }
-              ref1.current = "active";
-              ref2.current = "";
-              ref3.current = "";
-
-              return setShowComponent("favorited-dogs");
+              toggleTab("favorited-dogs");
             }}
           >
             favorited ( {favoriteDogs.length} )
@@ -70,31 +61,21 @@ export const FunctionalSection = ({
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${ref2.current}`}
+            className={`selector ${
+              activeComponent === "unfavorited-dogs" ? "active" : ""
+            }`}
             onClick={() => {
-              if (showComponent === "unfavorited-dogs") {
-                ref2.current = "";
-                return setShowComponent("all-dogs");
-              }
-              ref1.current = "";
-              ref2.current = "active";
-              ref3.current = "";
-              return setShowComponent("unfavorited-dogs");
+              toggleTab("unfavorited-dogs");
             }}
           >
             unfavorited ( {unfavoriteDogs.length} )
           </div>
           <div
-            className={`selector ${ref3.current}`}
+            className={`selector ${
+              activeComponent === "create-dog-form" ? "active" : ""
+            }`}
             onClick={() => {
-              if (showComponent === "dog-form") {
-                ref3.current = "";
-                return setShowComponent("all-dogs");
-              }
-              ref1.current = "";
-              ref2.current = "";
-              ref3.current = "active";
-              return setShowComponent("dog-form");
+              toggleTab("create-dog-form");
             }}
           >
             create dog
@@ -102,35 +83,32 @@ export const FunctionalSection = ({
         </div>
       </div>
       <div className="content-container">
-        {showComponent === "all-dogs" && (
+        {activeComponent === "all-dogs" && (
           <FunctionalDogs
             allDogs={allDogs}
             isLoading={isLoading}
             deleteDog={deleteDog}
             updateDog={updateDog}
-          
           />
         )}
-        {showComponent === "favorited-dogs" && (
+        {activeComponent === "favorited-dogs" && (
           <FunctionalDogs
             allDogs={favoriteDogs}
             isLoading={isLoading}
             deleteDog={deleteDog}
             updateDog={updateDog}
-           
           />
         )}
-        {showComponent === "unfavorited-dogs" && (
+        {activeComponent === "unfavorited-dogs" && (
           <FunctionalDogs
             allDogs={unfavoriteDogs}
             isLoading={isLoading}
             deleteDog={deleteDog}
             updateDog={updateDog}
-           
           />
         )}
 
-        {showComponent === "dog-form" && (
+        {activeComponent === "create-dog-form" && (
           <FunctionalCreateDogForm
             createDog={createDog}
             isLoading={isLoading}
