@@ -8,7 +8,7 @@ export class ClassCreateDogForm extends Component<{
   state = {
     nameInput: "",
     descriptionInput: "",
-    dogSelectionImage: "",
+    dogSelectionImage: dogPictures.BlueHeeler,
   };
   render() {
     const { createDog, isLoading } = this.props;

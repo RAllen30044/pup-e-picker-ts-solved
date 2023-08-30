@@ -8,13 +8,11 @@ export const FunctionalDogs = ({
   isLoading,
   deleteDog,
   updateDog,
-
 }: {
   allDogs: Dog[];
   isLoading: boolean;
   deleteDog: (id: number) => void;
   updateDog: (id: number, favorite: boolean) => void;
-
 }) => {
   return (
     //  the "<> </>"" are called react fragments, it's like adding all the html inside
@@ -33,15 +31,12 @@ export const FunctionalDogs = ({
             key={dog.id}
             onTrashIconClick={() => {
               deleteDog(dog.id);
-              
             }}
             onHeartClick={() => {
               updateDog(dog.id, dog.isFavorite);
-             
             }}
             onEmptyHeartClick={() => {
               updateDog(dog.id, dog.isFavorite);
-             
             }}
             isLoading={isLoading}
           />
